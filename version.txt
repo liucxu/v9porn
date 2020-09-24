@@ -1,22 +1,9 @@
 {
-"apkDownloadUrl": "https://raw.githubusercontent.com/techGay/v9porn/master/apk/v9porn-v1.1.6.apk",
+"apkDownloadUrl": "https://raw.githubusercontent.com/techGay/v9porn/master/apk/v9porn-v1.1.7.apk",
 "updateMessage": "
-本次更新来自[liucxu](https://github.com/liucxu)贡献的修改，非常感谢!具体更新如下：\n
-
-根据作者的源码，我这边修正了一个版本，目前实现的功能有:\n
-1、查看porn的主页视频列表\n
-2、查看porn的各个分类视频列表\n
-3、播放视频\n
-4、查看评论\n
-5、查看作者视频\n
-6、收藏视频\n
-7、查看收藏的视频\n
-未完成未测试的功能:\n
-1、添加评论\n
-2、删除收藏\n
-3、未完全测试其他功能\n
-(恢复原签名，1.1.5需要卸载重装)\n
+本次更新还是来自[liucxu](https://github.com/liucxu)贡献的修改，非常感谢!具体更新如下：\n
+1. 修复了网站更新后无法解析视频播放
 ",
-"versionCode": 17,
-"versionName": "1.1.6"
+"versionCode": 18,
+"versionName": "1.1.7"
 }

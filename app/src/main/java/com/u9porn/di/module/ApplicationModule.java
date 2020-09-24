@@ -156,6 +156,8 @@ public abstract class ApplicationModule {
         //启用JavaScript。
         mWebSettings.setJavaScriptEnabled(true);
         mWebSettings.setUseWideViewPort(true);
+        mWebSettings.setLoadsImagesAutomatically(false);
+        mWebSettings.setBlockNetworkImage(true);
         mWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
         //mWebView.loadUrl("file:///android_asset/web/index.html"); //js文件路径

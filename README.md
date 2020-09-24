@@ -15,6 +15,11 @@ rxjava + retrofit + rxcache + mvp + jsoup + dagger2
 
 ### 更新日志：
 
+-----2020年09月18日 v1.1.7
+本次更新还是来自[liucxu](https://github.com/liucxu)贡献的修改，非常感谢!具体更新如下：
+
+1. 修改了网站更新无法解析播放视频的问题
+
 -----2020年05月27日 v1.1.6
 
 本次更新来自[liucxu](https://github.com/liucxu)贡献的修改，非常感谢!具体更新如下：
