@@ -3,7 +3,6 @@ package com.u9porn.di.module;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -29,7 +28,8 @@ import com.u9porn.di.ApplicationContext;
 import com.u9porn.di.DatabaseInfo;
 import com.u9porn.di.PreferenceInfo;
 import com.u9porn.parser.v9porn.VideoPlayUrlParser;
-import com.u9porn.parser.v9porn.d20200206.VideoUrlParser;
+
+import com.u9porn.parser.v9porn.d20201009.VideoUrlParser;
 import com.u9porn.utils.AddressHelper;
 import com.u9porn.utils.AppCacheUtils;
 import com.u9porn.utils.MyHeaderInjector;

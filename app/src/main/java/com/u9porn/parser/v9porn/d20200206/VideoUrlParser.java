@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 public class VideoUrlParser extends BaseVideoPlayUrlParser implements VideoPlayUrlParser {
 
-    @Inject
+
     public VideoUrlParser() {
 
     }

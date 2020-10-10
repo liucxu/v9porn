@@ -66,25 +66,25 @@ public class PlayVideoPresenter extends MvpBasePresenter<PlayVideoView> implemen
 
     private DataManager dataManager;
 
-    class InJavaScriptLocalObj {
-        @JavascriptInterface
-        public void showSource(String html) {
-            Logger.d("HTML", html);
-        }
-    }
-
-    private Handler mHandler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            if(msg.what==0){
-                V9PornItem v9PornItem=(V9PornItem)msg.obj;
-                ifViewAttached(view -> view.parseVideoUrlSuccess(v9PornItem));
-            }
-            else if(msg.what==1){
-                ifViewAttached(view -> view.errorParseVideoUrl("解析视频链接失败了"));
-            }
-        }
-    };
+//    class InJavaScriptLocalObj {
+//        @JavascriptInterface
+//        public void showSource(String html) {
+//            Logger.d("HTML", html);
+//        }
+//    }
+//
+//    private Handler mHandler=new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            if(msg.what==0){
+//                V9PornItem v9PornItem=(V9PornItem)msg.obj;
+//                ifViewAttached(view -> view.parseVideoUrlSuccess(v9PornItem));
+//            }
+//            else if(msg.what==1){
+//                ifViewAttached(view -> view.errorParseVideoUrl("解析视频链接失败了"));
+//            }
+//        }
+//    };
 
 //    private final WebView webView;
 
@@ -117,8 +117,8 @@ public class PlayVideoPresenter extends MvpBasePresenter<PlayVideoView> implemen
                     return videoResult;
                 })
                 .retryWhen(new RetryWhenProcess(RetryWhenProcess.PROCESS_TIME))
-                //.compose(RxSchedulersHelper.ioMainThread())
-                .subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread())
+                .compose(RxSchedulersHelper.ioMainThread())
+               // .subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread())
                 .compose(provider.bindUntilEvent(Lifecycle.Event.ON_DESTROY))
                 .subscribe(new CallBackWrapper<VideoResult>() {
                     @Override

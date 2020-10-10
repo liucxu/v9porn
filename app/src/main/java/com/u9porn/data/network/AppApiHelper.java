@@ -206,30 +206,30 @@ public class AppApiHelper implements ApiHelper {
     public Observable<VideoResult> loadPorn9VideoUrl(String viewKey) {
         String ip = addressHelper.getRandomIPAddress();
         //因为登录后不在返回用户uid，需要在此页面获取，所以当前页面不在缓存，确保用户登录后刷新当前页面可以获取到用户uid
-//        return v9PornServiceApi.getVideoPlayPage(viewKey, ip, HeaderUtils.getIndexHeader(addressHelper))
-//                .map(html -> videoPlayUrlParser.parseVideoPlayUrl(html, user));
-        return Observable.create(new ObservableOnSubscribe(){
-            @Override
-            public void subscribe(ObservableEmitter emitter) throws Exception {
-                Map<String, String > headers = new HashMap<String, String>();
-                headers.put("X-Forwarded-For",ip);
-                headers.put("Referer", HeaderUtils.getIndexHeader(addressHelper));
-                MyApplication.getInstance().getWebView().addJavascriptInterface(new InJavaScriptLocalObj(){
-                    @JavascriptInterface
-                    @Override
-                    public void showSource(String html) {
-                        Logger.t(TAG).d("Webview 取回来的html source: "+html);
-                        emitter.onNext(html);
-                    }
-                },"local_obj");
-                MyApplication.getInstance().getWebView().loadUrl(MyApplication.getInstance().getAddressHelper().getVideo9PornAddress()+"view_video.php"+"?viewkey="+viewKey);
-            }
-        }).map(new Function<String,VideoResult>() {
-            @Override
-            public VideoResult apply(String html) throws Exception {
-                return videoPlayUrlParser.parseVideoPlayUrl(html, user);
-            }
-        });
+        return v9PornServiceApi.getVideoPlayPage(viewKey,  HeaderUtils.getIndexHeader(addressHelper))
+                .map(html -> videoPlayUrlParser.parseVideoPlayUrl(html, user));
+//        return Observable.create(new ObservableOnSubscribe(){
+//            @Override
+//            public void subscribe(ObservableEmitter emitter) throws Exception {
+//                Map<String, String > headers = new HashMap<String, String>();
+//                headers.put("X-Forwarded-For",ip);
+//                headers.put("Referer", HeaderUtils.getIndexHeader(addressHelper));
+//                MyApplication.getInstance().getWebView().addJavascriptInterface(new InJavaScriptLocalObj(){
+//                    @JavascriptInterface
+//                    @Override
+//                    public void showSource(String html) {
+//                        Logger.t(TAG).d("Webview 取回来的html source: "+html);
+//                        emitter.onNext(html);
+//                    }
+//                },"local_obj");
+//                MyApplication.getInstance().getWebView().loadUrl(MyApplication.getInstance().getAddressHelper().getVideo9PornAddress()+"view_video.php"+"?viewkey="+viewKey);
+//            }
+//        }).map(new Function<String,VideoResult>() {
+//            @Override
+//            public VideoResult apply(String html) throws Exception {
+//                return videoPlayUrlParser.parseVideoPlayUrl(html, user);
+//            }
+//        });
     }
 
     @Override
@@ -293,7 +293,7 @@ public class AppApiHelper implements ApiHelper {
 //                    }
 //                    return msg;
 //                });
-        return v9PornServiceApi.favoriteVideo(videoId, uId, uvid,HeaderUtils.getIndexHeader(addressHelper)).map(code -> {
+        return v9PornServiceApi.favoriteVideo(videoId, uId, uvid, HeaderUtils.getIndexHeader(addressHelper)).map(code -> {
             String msg;
             switch (Integer.parseInt(code)) {
                 case FavoriteJsonResult.FAVORITE_SUCCESS:

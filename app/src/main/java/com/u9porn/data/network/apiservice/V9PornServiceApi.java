@@ -34,12 +34,11 @@ public interface V9PornServiceApi {
      * 访问页面获取视频地址页面
      *
      * @param viewkey   视频的key
-     * @param ipAddress 随机访问地址，为了突破限制游客每天10次观看次数
      * @return body
      */
     @Headers({"Domain-Name: " + Api.PORN9_VIDEO_DOMAIN_NAME})
     @GET("/view_video.php")
-    Observable<String> getVideoPlayPage(@Query("viewkey") String viewkey, @Header("X-Forwarded-For") String ipAddress, @Header("Referer") String referer);
+    Observable<String> getVideoPlayPage(@Query("viewkey") String viewkey, @Header("Referer") String referer);
 
     /**
      * 获取相应类别数据
